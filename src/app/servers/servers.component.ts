@@ -23,6 +23,6 @@ export class ServersComponent implements OnInit {
 
   onLoad() {
     // relative path with activatedRoute
-    this.router.navigate(['servers'], {relativeTo: this.activatedRoute});
+    // this.router.navigate(['servers'], {relativeTo: this.activatedRoute});
   }
 }

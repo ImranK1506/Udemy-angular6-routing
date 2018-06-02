@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { ServersService } from '../servers.service';
 
+import {ActivatedRoute} from '@angular/router';
+
 @Component({
   selector: 'app-edit-server',
   templateUrl: './edit-server.component.html',
@@ -12,9 +14,18 @@ export class EditServerComponent implements OnInit {
   serverName = '';
   serverStatus = '';
 
-  constructor(private serversService: ServersService) { }
+  constructor(
+    private serversService: ServersService,
+    private activatedRoute: ActivatedRoute
+) { }
 
   ngOnInit() {
+    // retrieve queryParams data - non reactive
+    console.log(this.activatedRoute.snapshot.queryParams);
+    console.log(this.activatedRoute.snapshot.fragment);
+    // alternative way to retrieve dat from queryparams
+    this.activatedRoute.queryParams.subscribe();
+    this.activatedRoute.fragment.subscribe();
     this.server = this.serversService.getServer(1);
     this.serverName = this.server.name;
     this.serverStatus = this.server.status;
